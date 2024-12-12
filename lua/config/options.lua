@@ -10,3 +10,5 @@ opt.shiftwidth = 4
 --opt.expandtab = true
 
 opt.termguicolors = true
+
+vim.g.exrc = true
