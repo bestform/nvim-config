@@ -2,7 +2,7 @@
 -- Default options that are always set: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/options.lua
 -- Add any additional options here
 local opt = vim.opt
-opt.scrolloff = 12
+opt.scrolloff = 19
 
 -- tabs
 opt.tabstop = 4
@@ -10,5 +10,8 @@ opt.shiftwidth = 4
 --opt.expandtab = true
 
 opt.termguicolors = true
+
+-- disable tab character display
+opt.list = false
 
 vim.g.exrc = true
