@@ -52,35 +52,37 @@ require("lazy").setup({
   },
 })
 
-require("telescope").setup({
-  defaults = {
-    vimgrep_arguments = {
-      "rg",
-      "--color=never",
-      "--no-heading",
-      "--with-filename",
-      "--line-number",
-      "--column",
-      "--smart-case",
-      "--hidden",
-      "--no-ignore-vcs",
-    },
-  },
-  pickers = {
-    find_files = {
-      -- `hidden = true` will still show the inside of `.git/` as it's not `.gitignore`d.
-      find_command = {
-        "rg",
-        "--no-ignore",
-        "--files",
-        "--hidden",
-        "--glob",
-        "!**/.git/*",
-        "--glob",
-        "!**/node_modules/*",
-        "--glob",
-        "!**/.idea/*",
-      },
-    },
-  },
-})
+-- require("telescope").setup({
+--   defaults = {
+--     vimgrep_arguments = {
+--       "rg",
+--       "--color=never",
+--       "--no-heading",
+--       "--with-filename",
+--       "--line-number",
+--       "--column",
+--       "--smart-case",
+--       "--hidden",
+--       "--no-ignore-vcs",
+--     },
+--   },
+--   pickers = {
+--     find_files = {
+--       -- `hidden = true` will still show the inside of `.git/` as it's not `.gitignore`d.
+--       find_command = {
+--         "rg",
+--         "--no-ignore",
+--         "--files",
+--         "--hidden",
+--         "--glob",
+--         "!**/.git/*",
+--         "--glob",
+--         "!**/node_modules/*",
+--         "--glob",
+--         "!**/.idea/*",
+--         "--glob",
+--         "!**/var/cache/*",
+--       },
+--     },
+--   },
+-- })
