@@ -18,4 +18,14 @@ return {
       opts.sections.lualine_c[4] = { LazyVim.lualine.pretty_path({ length = 0 }) }
     end,
   },
+  -- disable code style checker for php as it is very noicy on existing projects
+  {
+    "mfussenegger/nvim-lint",
+    optional = true,
+    opts = {
+      linters_by_ft = {
+        php = {}, -- was { "phpcs" }
+      },
+    },
+  },
 }
