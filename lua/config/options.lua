@@ -15,3 +15,5 @@ opt.termguicolors = true
 opt.list = false
 
 vim.g.exrc = true
+
+vim.g.lazyvim_php_lsp = "intelephense"

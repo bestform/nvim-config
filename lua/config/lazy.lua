@@ -52,6 +52,21 @@ require("lazy").setup({
   },
 })
 
+-- require("lspconfig").intelephense.setup({
+--   settings = {
+--     intelephense = {
+--       files = {
+--         exclude = {
+--           "**/.git", -- Keep ignoring the `.git` folder
+--           "**/node_modules", -- Ignore `node_modules`
+--           "!app/cache/autoclasses/**", -- Exclude all, but include `custom_folder`
+--         },
+--       },
+--     },
+--   },
+-- })
+
+--
 -- require("telescope").setup({
 --   defaults = {
 --     vimgrep_arguments = {
