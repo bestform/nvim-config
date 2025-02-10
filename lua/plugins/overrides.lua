@@ -25,6 +25,7 @@ return {
     opts = {
       linters_by_ft = {
         php = {}, -- was { "phpcs" }
+        markdown = {}, -- was { "markdownlint-cli2" }
       },
     },
   },
