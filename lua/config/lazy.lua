@@ -69,7 +69,8 @@ end)
 --
 local fzf = require("fzf-lua")
 local fzf_actions = require("fzf-lua.actions")
-local function harpoon_fzf_picker(harpoon_files)
+local function harpoon_fzf_picker()
+  local harpoon_files = harpoon:list()
   local entries = {}
   for _, item in ipairs(harpoon_files.items) do
     table.insert(entries, item.value)
@@ -87,7 +88,7 @@ local function harpoon_fzf_picker(harpoon_files)
         for _, item in ipairs(files.items) do
           if item.value == selected[1] then
             harpoon:list():remove(item)
-            harpoon_fzf_picker(files)
+            harpoon_fzf_picker()
             break
           end
         end
@@ -97,7 +98,7 @@ local function harpoon_fzf_picker(harpoon_files)
 end
 
 vim.keymap.set("n", "<C-e>", function()
-  harpoon_fzf_picker(harpoon:list())
+  harpoon_fzf_picker()
 end, { desc = "Harpoon FZF" })
 
 -- vim.keymap.set("n", "<C-h>", function() harpoon:list():select(1) end)
