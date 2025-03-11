@@ -17,3 +17,6 @@ opt.list = false
 vim.g.exrc = true
 
 vim.g.lazyvim_php_lsp = "intelephense"
+
+-- ensure that the root is not changing when using subprojects with npm
+vim.g.root_spec = { "cwd" }
