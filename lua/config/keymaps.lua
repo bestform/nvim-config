@@ -9,6 +9,7 @@ map("n", "<leader>H", "<cmd>LazyHealth<cr>", { desc = "Lazy Health Check" })
 map("n", "<leader>k", "<cmd>Fzf keymaps<cr>", { desc = "Keymap" })
 map("n", "<leader>bn", "<cmd>bnext<cr>", { desc = "Next Buffer" })
 map("n", "<leader>bp", "<cmd>bprevious<cr>", { desc = "Previous Buffer" })
+map("n", "Q", "@q", { desc = "Run macro in register q" })
 
 vim.keymap.set("n", "<F9>", function()
   require("dap").continue()
