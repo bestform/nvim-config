@@ -9,6 +9,8 @@ map("n", "<leader>H", "<cmd>LazyHealth<cr>", { desc = "Lazy Health Check" })
 map("n", "<leader>k", "<cmd>Fzf keymaps<cr>", { desc = "Keymap" })
 map("n", "<leader>bn", "<cmd>bnext<cr>", { desc = "Next Buffer" })
 map("n", "<leader>bp", "<cmd>bprevious<cr>", { desc = "Previous Buffer" })
+map("n", "<leader>cn", "<cmd>cnext<cr>", { desc = "Next quickfix item" })
+map("n", "<leader>cp", "<cmd>cprev<cr>", { desc = "Previous quickfix item" })
 map("n", "Q", "@q", { desc = "Run macro in register q" })
 
 vim.keymap.set("n", "<F9>", function()
