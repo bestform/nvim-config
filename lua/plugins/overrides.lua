@@ -29,4 +29,34 @@ return {
       },
     },
   },
+  -- use C-k and C-j to navigate completion menu
+  {
+    "saghen/blink.cmp",
+    opts = {
+      keymap = {
+        preset = "enter",
+        ["<C-k>"] = {
+          function(cmp)
+            local menu = require("blink.cmp.completion.windows.menu")
+
+            if menu.win:is_open() then
+              cmp["select_prev"]()
+              return true
+            end
+          end,
+          "show_signature",
+        },
+        ["<C-j>"] = {
+          function(cmp)
+            local menu = require("blink.cmp.completion.windows.menu")
+            if menu.win:is_open() then
+              cmp["select_next"]()
+              return true
+            end
+          end,
+          "fallback",
+        },
+      },
+    },
+  },
 }
