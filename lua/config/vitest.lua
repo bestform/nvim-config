@@ -9,6 +9,7 @@ local run_vitests = function(name, path)
     else
       vim.notify("Vitest finished with errors", vim.log.levels.ERROR)
     end
+    vim.api.nvim_win_set_config(win_id, { title = "vitest (done)" })
   end
 
   local handle_stdout = function(_, data, _)
@@ -49,7 +50,7 @@ local run_vitests = function(name, path)
     height = height - 3,
     border = "rounded",
     style = "minimal",
-    title = "vitest",
+    title = "vitest (running...)",
     title_pos = "center",
   })
 
