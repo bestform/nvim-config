@@ -1,5 +1,5 @@
 local test_list_cache = nil
-local run_vitests = function(name)
+local run_vitests = function(name, path)
   local buf_id = vim.api.nvim_create_buf(false, true)
   local win_id = -1
   local chan_id = -1
@@ -36,6 +36,10 @@ local run_vitests = function(name)
   local conf = vim.api.nvim_win_get_config(0)
   local width = conf.width or 80
   local height = conf.height or 80
+  local filenamepart = ""
+  if path then
+    filenamepart = path
+  end
 
   win_id = vim.api.nvim_open_win(buf_id, true, {
     relative = "win",
@@ -50,12 +54,15 @@ local run_vitests = function(name)
   })
 
   -- run tests
-  vim.fn.jobstart('npm run test -- --hideSkippedTests -t "' .. name .. '"', {
-    cwd = vim.fn.getcwd(-1, -1),
-    pty = true,
-    on_stdout = handle_stdout,
-    on_exit = handle_exit,
-  })
+  vim.fn.jobstart(
+    "npm run test -- " .. filenamepart .. ' --hideSkippedTests --passWithNoTests --coverage false -t "' .. name .. '"',
+    {
+      cwd = vim.fn.getcwd(-1, -1),
+      pty = true,
+      on_stdout = handle_stdout,
+      on_exit = handle_exit,
+    }
+  )
 end
 
 local fzf = require("fzf-lua")
@@ -78,22 +85,29 @@ local function vitest_fzf_picker()
   for k, _ in parts do
     local test = vim.json.decode(k)
     local testname = test.name
+    local testpath = test.file
+    local entry = string.format("%s\t%s", testname, testpath)
     if testname == last_test then
-      table.insert(entries, 1, test.name)
+      table.insert(entries, 1, entry)
     else
-      table.insert(entries, test.name)
+      table.insert(entries, entry)
     end
   end
   fzf.fzf_exec(entries, {
     prompt = promptName,
+    fzf_opts = {
+      ["--delimiter"] = "\t",
+      ["--with-nth"] = "1",
+    },
     actions = {
       ["default"] = function(selected)
-        last_test = selected[1]
-        local name, _ = selected[1]:gsub(" >", "")
+        local sel_parts = vim.split(selected[1], "\t")
+        last_test = sel_parts[1]
+        local name, _ = sel_parts[1]:gsub(" >", "")
         if name == "ALL" then
           run_vitests("")
         else
-          run_vitests("^" .. name .. "$")
+          run_vitests("^" .. name .. "$", sel_parts[2])
         end
       end,
     },
