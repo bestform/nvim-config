@@ -61,6 +61,7 @@ end
 local fzf = require("fzf-lua")
 local last_test = ""
 local function vitest_fzf_picker()
+  local promptName = "Vitest (cached) > "
   local entries = {}
   table.insert(entries, "ALL")
   local jsonlist = test_list_cache
@@ -70,6 +71,7 @@ local function vitest_fzf_picker()
         cwd = vim.fn.getcwd(-1, -1),
       })
       :wait()
+    promptName = "Vitest > "
     test_list_cache = jsonlist
   end
   local parts = string.gmatch(jsonlist.stdout, "{[^}]*}")
@@ -83,7 +85,7 @@ local function vitest_fzf_picker()
     end
   end
   fzf.fzf_exec(entries, {
-    prompt = "Vitest > ",
+    prompt = promptName,
     actions = {
       ["default"] = function(selected)
         last_test = selected[1]
