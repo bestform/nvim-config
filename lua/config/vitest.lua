@@ -68,19 +68,26 @@ end
 
 local fzf = require("fzf-lua")
 local last_test = ""
-local function vitest_fzf_picker()
+local function vitest_fzf_picker(singlefile)
   local promptName = "Vitest (cached) > "
   local entries = {}
   table.insert(entries, "ALL")
   local jsonlist = test_list_cache
-  if jsonlist == nil then
+  if jsonlist == nil or singlefile ~= nil then
+    local command = { "npm", "run", "list", "--" }
+    if singlefile ~= nil then
+      table.insert(command, singlefile)
+    end
+    table.insert(command, "--json")
     jsonlist = vim
-      .system({ "npm", "run", "list" }, {
+      .system(command, {
         cwd = vim.fn.getcwd(-1, -1),
       })
       :wait()
     promptName = "Vitest > "
-    test_list_cache = jsonlist
+    if singlefile == nil then
+      test_list_cache = jsonlist
+    end
   end
   local parts = string.gmatch(jsonlist.stdout, "{[^}]*}")
   for k, _ in parts do
@@ -115,6 +122,15 @@ local function vitest_fzf_picker()
   })
 end
 
+vim.keymap.set("n", "<leader>tf", function()
+  local openfile = vim.fn.expand("%:p")
+  -- test if file ends with .test.ts or .test.js
+  if not openfile:match("%.test%.ts$") then
+    vim.notify("This file is not a test file", vim.log.levels.WARN)
+    return
+  end
+  vitest_fzf_picker(openfile)
+end, { desc = "Run Vitest" })
 vim.keymap.set("n", "<leader>tt", function()
   vitest_fzf_picker()
 end, { desc = "Run Vitest" })
