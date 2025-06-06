@@ -10,7 +10,7 @@ opt.shiftwidth = 4
 --opt.expandtab = true
 
 opt.termguicolors = true
-
+opt.background = "dark"
 -- disable tab character display
 opt.list = false
 
