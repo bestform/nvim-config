@@ -99,4 +99,18 @@ return {
     --   vim.cmd.colorscheme("kanagawa-wave")
     -- end,
   },
+  {
+    "nvim-neo-tree/neo-tree.nvim",
+    opts = {
+      filesystem = {
+        filtered_items = {
+          hide_dotfiles = false,
+          hide_gitignored = false,
+        },
+      },
+    },
+  },
+  {
+    "NMAC427/guess-indent.nvim", -- Detect tabstop and shiftwidth automatically
+  },
 }
