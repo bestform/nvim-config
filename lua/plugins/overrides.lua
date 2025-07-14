@@ -59,4 +59,15 @@ return {
       },
     },
   },
+  {
+    "neovim/nvim-lspconfig",
+    opts = {
+      inlay_hints = { enabled = false },
+    },
+  }, -- disable tab bar
+  -- {
+  --
+  --   "akinsho/bufferline.nvim",
+  --   enabled = false,
+  -- },
 }
