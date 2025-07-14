@@ -13,6 +13,8 @@ map("n", "<leader>cn", "<cmd>cnext<cr>", { desc = "Next quickfix item" })
 map("n", "<leader>cp", "<cmd>cprev<cr>", { desc = "Previous quickfix item" })
 map("n", "Q", "@q", { desc = "Run macro in register q" })
 
+vim.api.nvim_set_keymap("n", "<Leader>dd", ":lua vim.diagnostic.open_float()<CR>", { noremap = true, silent = true })
+
 vim.keymap.set("n", "<F9>", function()
   require("dap").continue()
 end)
