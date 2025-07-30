@@ -22,3 +22,5 @@ vim.g.lazyvim_php_lsp = "intelephense"
 vim.g.root_spec = { "cwd" }
 
 opt.smartindent = true
+
+opt.winborder = "rounded"
