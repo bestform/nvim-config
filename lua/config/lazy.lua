@@ -55,3 +55,5 @@ require("lazy").setup({
 require("config.vitest")
 -- set colorscheme from plugin. With require we make sure the plugin is loaded before setting the colorscheme
 require("kanagawa").load("wave")
+
+require("oil").setup()
