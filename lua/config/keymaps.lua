@@ -15,6 +15,11 @@ map("n", "Q", "@q", { desc = "Run macro in register q" })
 
 vim.api.nvim_set_keymap("n", "<Leader>dd", ":lua vim.diagnostic.open_float()<CR>", { noremap = true, silent = true })
 
+-- lua execute commands
+vim.keymap.set("n", "<Leader>E", "<cmd>source %<CR>")
+vim.keymap.set("n", "<Leader>e", ":.lua<CR>")
+vim.keymap.set("v", "<Leader>e", ":lua<CR>")
+
 vim.keymap.set("n", "<F9>", function()
   require("dap").continue()
 end)
