@@ -24,3 +24,5 @@ vim.g.root_spec = { "cwd" }
 opt.smartindent = true
 
 opt.winborder = "rounded"
+
+opt.swapfile = false
