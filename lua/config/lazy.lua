@@ -57,3 +57,5 @@ require("config.vitest")
 require("kanagawa").load("wave")
 
 require("oil").setup()
+
+require("ts-error-translator").setup()
