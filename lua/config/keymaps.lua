@@ -20,6 +20,9 @@ vim.keymap.set("n", "<Leader>Xf", "<cmd>source %<CR>", { desc = "execute LUA fil
 vim.keymap.set("n", "<Leader>Xl", ":.lua<CR>", { desc = "execute LUA line" })
 vim.keymap.set("v", "<Leader>Xs", ":lua<CR>", { desc = "execute LUA selection" })
 
+-- treesj
+map("n", "<leader>m", require("treesj").toggle, { desc = "Toggle Treesj" })
+
 --- debugger
 vim.keymap.set("n", "<F9>", function()
   require("dap").continue()
