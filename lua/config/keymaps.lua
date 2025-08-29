@@ -59,3 +59,6 @@ vim.keymap.set("n", "<Leader>ds", function()
   local widgets = require("dap.ui.widgets")
   widgets.centered_float(widgets.scopes)
 end)
+
+vim.keymap.set("n", "ö", "[")
+vim.keymap.set("n", "ä", "]")
