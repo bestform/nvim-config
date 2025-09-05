@@ -62,3 +62,16 @@ end)
 
 vim.keymap.set("n", "ö", "[")
 vim.keymap.set("n", "ä", "]")
+
+-- neotest
+
+map("n", "<leader>tt", function()
+  require("neotest").run.run(vim.fn.expand("%"))
+end, { desc = "Neotest Run File" })
+
+map("n", "<leader>tf", function()
+  require("neotest").run.run()
+end, { desc = "Neotest Run Nearest" })
+
+map("n", "<leader>ts", "<cmd>Neotest summary<cr>", { desc = "Neotest Summary" })
+map("n", "<leader>to", "<cmd>Neotest output-panel<cr>", { desc = "Neotest Output Panel" })
