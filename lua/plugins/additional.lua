@@ -114,6 +114,10 @@ return {
     "NMAC427/guess-indent.nvim", -- Detect tabstop and shiftwidth automatically
   },
   {
+    "akinsho/bufferline.nvim",
+    enabled = false,
+  },
+  {
     "sphamba/smear-cursor.nvim",
     enabled = false,
     opts = { -- Default  Range
