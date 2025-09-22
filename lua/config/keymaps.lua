@@ -4,6 +4,7 @@
 --
 
 local map = vim.keymap.set
+local wk = require("which-key")
 
 map("n", "<leader>H", "<cmd>LazyHealth<cr>", { desc = "Lazy Health Check" })
 map("n", "<leader>k", "<cmd>Fzf keymaps<cr>", { desc = "Keymap" })
@@ -16,6 +17,7 @@ map("n", "Q", "@q", { desc = "Run macro in register q" })
 vim.api.nvim_set_keymap("n", "<Leader>dd", ":lua vim.diagnostic.open_float()<CR>", { noremap = true, silent = true })
 
 -- lua execute commands
+wk.add({ "<leader>X", group = "LUA" })
 vim.keymap.set("n", "<Leader>Xf", "<cmd>source %<CR>", { desc = "execute LUA file" })
 vim.keymap.set("n", "<Leader>Xl", ":.lua<CR>", { desc = "execute LUA line" })
 vim.keymap.set("v", "<Leader>Xs", ":lua<CR>", { desc = "execute LUA selection" })
@@ -64,6 +66,8 @@ vim.keymap.set("n", "ö", "[")
 vim.keymap.set("n", "ä", "]")
 
 -- neotest
+
+wk.add({ "<leader>t", group = "tests" })
 
 map("n", "<leader>tt", function()
   require("neotest").run.run(vim.fn.expand("%"))
