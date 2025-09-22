@@ -175,7 +175,6 @@ return {
           require("neotest-vitest")({
             -- Filter directories when searching for test files. Useful in large projects (see Filter directories notes).
             filter_dir = function(name, rel_path, root)
-              print("checking " .. name)
               return name ~= "node_modules"
             end,
           }),
