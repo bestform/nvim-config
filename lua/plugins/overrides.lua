@@ -63,6 +63,18 @@ return {
     "neovim/nvim-lspconfig",
     opts = {
       inlay_hints = { enabled = false },
+      -- this is done to enable typescript-tools.nvim
+      servers = {
+        tsserver = {
+          enabled = false,
+        },
+        ts_ls = {
+          enabled = false,
+        },
+        vtsls = {
+          enabled = false,
+        },
+      },
     },
   }, -- disable tab bar
   -- {
