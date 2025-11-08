@@ -12,7 +12,6 @@ map("n", "<leader>bn", "<cmd>bnext<cr>", { desc = "Next Buffer" })
 map("n", "<leader>bp", "<cmd>bprevious<cr>", { desc = "Previous Buffer" })
 map("n", "<leader>cn", "<cmd>cnext<cr>", { desc = "Next quickfix item" })
 map("n", "<leader>cp", "<cmd>cprev<cr>", { desc = "Previous quickfix item" })
-map("n", "Q", "@q", { desc = "Run macro in register q" })
 
 vim.api.nvim_set_keymap("n", "<Leader>dd", ":lua vim.diagnostic.open_float()<CR>", { noremap = true, silent = true })
 
