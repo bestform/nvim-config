@@ -78,3 +78,10 @@ end, { desc = "Neotest Run Nearest" })
 
 map("n", "<leader>ts", "<cmd>Neotest summary<cr>", { desc = "Neotest Summary" })
 map("n", "<leader>to", "<cmd>Neotest output-panel<cr>", { desc = "Neotest Output Panel" })
+
+-- surround
+vim.keymap.set("v", "(", "c(<ESC>pa)")
+vim.keymap.set("v", "'", "c'<ESC>pa'")
+vim.keymap.set("v", '"', 'c"<ESC>pa"')
+vim.keymap.set("v", "[", "c[<ESC>pa]")
+vim.keymap.set("v", "{", "c{<ESC>pa}")
